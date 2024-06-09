@@ -1,0 +1,57 @@
+html, body {
+    overflow: hidden;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    width: 55px;
+    height: 55px;
+    margin: 5px 15px 15px 15px;
+    border-radius: 12px;
+}
+
+.play-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.skip-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    width: 125px;
+    height: 55px;
+    margin: 5px 15px 15px 15px;
+    border-radius: 12px;
+}
+
+.centered {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+}   

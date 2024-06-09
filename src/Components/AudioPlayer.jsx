@@ -1,7 +1,7 @@
 import {useState, useEffect }  from "react";
 import sound from '../songs/frankoceantest.mp3'
 import ProgressBarDifferentColour from './ProgressBarDifferentColour';
-import '../Styles/Button.css';
+import '../Styles/AudioPlayer.css';
 const AudioPlayer = () => {
     const [audio, setAudio] = useState( new Audio(sound) )
     const [buttonText, setButtonText] = useState('Skip +1S')
@@ -47,9 +47,15 @@ const AudioPlayer = () => {
 
     return (
         <div className="centered">
-            <button onClick={playMusic}>{'Play'}</button>
-            <button onClick={changeTime}>{buttonText}</button>
-            <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} />
+            <div className="progress-bar-container">
+                <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} />
+            </div>
+                <div className="button-container">
+                    <button className="play-button" onClick={playMusic}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/YouTube_Diamond_Play_Button.png/1200px-YouTube_Diamond_Play_Button.png"/>
+                    </button>
+                <button className="skip-button" onClick={changeTime}>{buttonText}</button>
+            </div>
         </div>
     );
 };
