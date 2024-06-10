@@ -1,6 +1,6 @@
 import React from 'react';
 import AudioPlayer from './Components/AudioPlayer';
-import './Styles/Index.css'
+import './Styles/Index.css';
 function App() {
 
   return (

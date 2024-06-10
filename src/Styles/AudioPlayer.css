@@ -20,6 +20,14 @@ html, body {
     height: 55px;
     margin: 5px 15px 15px 15px;
     border-radius: 12px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.time-text {
+    color: white;
+    font-size: 18px;
+    margin: 0px 10px;
 }
 
 .play-button img {
