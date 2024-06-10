@@ -1,0 +1,38 @@
+.YeTable {
+    position: relative;
+    /* margin: 20px; */
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  YeTable, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #333;
+    color: white;
+  }
+  
+  td {
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #2e2e2e;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #4e4e4e;
+  }
+
+.YeTab {
+    position: relative;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  

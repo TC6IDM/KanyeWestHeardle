@@ -3,6 +3,7 @@ import sound from '../Songs/frankoceantest.mp3'
 import ProgressBarDifferentColour from './ProgressBarDifferentColour';
 import '../Styles/AudioPlayer.css';
 import playbutton from '../Assets/play.png'
+import YeTable from './YeTable';
 import React from 'react';
 import SearchBar from './SearchBar';
 const AudioPlayer = () => {
@@ -10,7 +11,56 @@ const AudioPlayer = () => {
     const [buttonText, setButtonText] = useState('Skip +1S')
     const [time, setTime] = useState(1000)
     const [currentTime, setCurrentTime] = useState(0);
-
+    const songs2 = [
+        {
+          song: 'Ghost Town',
+          album: 'v',
+          trackNo: '6 v',
+          trackLength: '4:31 v',
+          features: 'PARTYNEXTDOOR, 070 Shake, Kid Cudi',
+          bgColor: '#FFC300' // Yellow
+        },
+        {
+          song: 'Champion',
+          album: 'Graduation',
+          trackNo: '2 ^',
+          trackLength: '2:47 ^',
+          features: 'No features',
+          bgColor: '#FF5733' // Orange
+        },
+        {
+          song: 'Good Life',
+          album: 'Graduation',
+          trackNo: '5',
+          trackLength: '3:27',
+          features: 'T-Pain',
+          bgColor: '#33FF57' // Green
+        },
+        {
+          song: 'Stronger',
+          album: 'Graduation',
+          trackNo: '3',
+          trackLength: '5:12',
+          features: 'Daft Punk',
+          bgColor: '#339FFF' // Blue
+        },
+        {
+          song: 'Heartless',
+          album: '808s & Heartbreak',
+          trackNo: '4',
+          trackLength: '3:31',
+          features: 'No features',
+          bgColor: '#FF33FF' // Purple
+        },
+        {
+          song: 'Power',
+          album: 'My Beautiful Dark Twisted Fantasy',
+          trackNo: '1',
+          trackLength: '4:52',
+          features: 'Dwele',
+          bgColor: '#FF3333' // Red
+        }
+      ];
     const songs = [
         'Song One',
         'Song Two',
@@ -67,6 +117,30 @@ const AudioPlayer = () => {
 
     return (
         <div className="centered">
+            <div className="YeTable">
+                <table className="YeTab">
+                    <thead>
+                    <tr>
+                        <th>Songs</th>
+                        <th>Album</th>
+                        <th>Track No.</th>
+                        <th>Track Length</th>
+                        <th>Features</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {songs2.map((song, index) => (
+                        <tr key={index} style={{ backgroundColor: song.bgColor }}>
+                        <td>{song.song}</td>
+                        <td>{song.album}</td>
+                        <td>{song.trackNo}</td>
+                        <td>{song.trackLength}</td>
+                        <td>{song.features}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
             <div className="progress-bar-container">
                 <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} cover={(16000 - musicList[musicList.indexOf(time)])/160 } />
             </div>
@@ -77,14 +151,14 @@ const AudioPlayer = () => {
                         <img src = {playbutton} />
                     </button>
                     
-                    <text className="time-textR">16s</text>
+                    <text className="time-textR">16.00s</text>
                 </div>
                 <div >
                     <SearchBar songs={songs} />
                 </div>
                 <div  className="button-container2">
-                    <button className="skip-button" onClick={changeTime}>{buttonText}</button>
-                    <button className="submit-button" onClick={submitAnswer}>Submit</button>
+                    <button className="menu-button" onClick={changeTime}>{buttonText}</button>
+                    <button className="menu-button" onClick={submitAnswer}>Submit</button>
                 </div>
                 
             </div>

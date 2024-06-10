@@ -3,8 +3,8 @@ from io import BytesIO
 from PIL import Image
 import os
 import json
-from tinytag import TinyTag
-import jsonpickle
+from tinytag import TinyTag # type: ignore
+import jsonpickle # type: ignore
 
 # Get a list of all songs
 song_dir = 'src\\Songs'
