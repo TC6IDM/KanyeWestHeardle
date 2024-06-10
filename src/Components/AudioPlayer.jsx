@@ -1,5 +1,5 @@
 import {useState, useEffect }  from "react";
-import sound from '../songs/frankoceantest.mp3'
+import sound from '../Songs/frankoceantest.mp3'
 import ProgressBarDifferentColour from './ProgressBarDifferentColour';
 import '../Styles/AudioPlayer.css';
 import playbutton from '../Assets/play.png'
