@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div>
-          <AudioPlayer> </AudioPlayer>
+          <AudioPlayer/>
     </div >
   );
 }

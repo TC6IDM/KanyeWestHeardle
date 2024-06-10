@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Styles/ProgressBar.css';
 
-const ProgressBarDifferentColour = ({currentValue, maxValue}) => {
+const ProgressBarDifferentColour = ({currentValue, maxValue, cover}) => {
   return (
     <div className="progressBarWrapper">
       <progress 
@@ -11,8 +11,7 @@ const ProgressBarDifferentColour = ({currentValue, maxValue}) => {
       >
         {currentValue}%
       </progress>
-      <div className="divider"></div>
-      <div className="divider"></div>
+      <div className="cover" style={{width: `${cover}%`}}></div>
       <div className="divider"></div>
       <div className="divider"></div>
       <div className="divider"></div>

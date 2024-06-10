@@ -3,11 +3,23 @@ import sound from '../songs/frankoceantest.mp3'
 import ProgressBarDifferentColour from './ProgressBarDifferentColour';
 import '../Styles/AudioPlayer.css';
 import playbutton from '../Assets/play.png'
+import React from 'react';
+import SearchBar from './SearchBar';
 const AudioPlayer = () => {
     const [audio, setAudio] = useState( new Audio(sound) )
     const [buttonText, setButtonText] = useState('Skip +1S')
     const [time, setTime] = useState(1000)
     const [currentTime, setCurrentTime] = useState(0);
+
+    const songs = [
+        'Song One',
+        'Song Two',
+        'Another Song',
+        'Some Other Song',
+        'A Different Song'
+      ];
+
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentTime(audio.currentTime);
@@ -46,19 +58,35 @@ const AudioPlayer = () => {
         }, time);
     }
 
+    const submitAnswer = () => {
+        audio.play();
+        setTimeout(() => {
+            audio.stop();
+        }, time);
+    }
+
     return (
         <div className="centered">
             <div className="progress-bar-container">
-                <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} />
+                <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} cover={(16000 - musicList[musicList.indexOf(time)])/160 } />
             </div>
-                <div className="button-container">
-                    <text className="time-text">{currentTime.toFixed(2)}s</text>
+                <div className="button-container2">
+                    <text className="time-textL">{currentTime.toFixed(2)}s</text>
+                    
                     <button className="play-button" onClick={playMusic}>
                         <img src = {playbutton} />
                     </button>
-                    <button className="skip-button" onClick={changeTime}>{buttonText}</button>
-                    <text className="time-text">16s</text>
+                    
+                    <text className="time-textR">16s</text>
                 </div>
+                <div >
+                    <SearchBar songs={songs} />
+                </div>
+                <div  className="button-container2">
+                    <button className="skip-button" onClick={changeTime}>{buttonText}</button>
+                    <button className="submit-button" onClick={submitAnswer}>Submit</button>
+                </div>
+                
             </div>
     );
 };

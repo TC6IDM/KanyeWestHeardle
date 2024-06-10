@@ -59,7 +59,7 @@ body {
   .progressBarWrapper {
     position: relative;
     height: 20px; /* Adjust this to change the height of the progress bar */
-    width: 75vw; /* Adjust this to change the width of the progress bar */
+    width: 50vw; /* Adjust this to change the width of the progress bar */
     border: 1px solid #ffffff; /* This will add a border around the progress bar */
   }
   
@@ -77,6 +77,9 @@ body {
   .progressBarWrapper::after {
     left: 6.25%; /* Position of second divider */
   }
+  .progressBarWrapper::before {
+    left: 12.50%; /* Position of third divider */
+  }
 
   .divider:nth-child(3)::before {
     left: 12.50%; /* Position of third divider */
@@ -92,4 +95,12 @@ body {
 
   .divider:nth-child(6)::before {
     left: 68.75%; /* Position of sixth divider */
+  }
+
+  .cover {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black; /* match this with the background color of the progress bar */
   }
