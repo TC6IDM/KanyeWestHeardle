@@ -54,8 +54,8 @@ const songs = [
 
 const YeTable = () => {
   return (
-    <div className="YeTable">
-      <table>
+    <div >
+      <table className="YeTable">
         <thead>
           <tr>
             <th>Songs</th>

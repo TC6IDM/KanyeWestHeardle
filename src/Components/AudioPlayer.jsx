@@ -117,29 +117,8 @@ const AudioPlayer = () => {
 
     return (
         <div className="centered">
-            <div className="YeTable">
-                <table className="YeTab">
-                    <thead>
-                    <tr>
-                        <th>Songs</th>
-                        <th>Album</th>
-                        <th>Track No.</th>
-                        <th>Track Length</th>
-                        <th>Features</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {songs2.map((song, index) => (
-                        <tr key={index} style={{ backgroundColor: song.bgColor }}>
-                        <td>{song.song}</td>
-                        <td>{song.album}</td>
-                        <td>{song.trackNo}</td>
-                        <td>{song.trackLength}</td>
-                        <td>{song.features}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+            <div>
+                <YeTable />
             </div>
             <div className="progress-bar-container">
                 <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} cover={(16000 - musicList[musicList.indexOf(time)])/160 } />
