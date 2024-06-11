@@ -1,52 +1,9 @@
 import React from 'react';
 import '../Styles/YeTable.css'; // Assuming you have some CSS to style the table
 
-const songs = [
-  {
-    song: 'Ghost Town',
-    album: 'v',
-    trackNo: '6 v',
-    trackLength: '4:31 v',
-    features: 'PARTYNEXTDOOR, 070 Shake, Kid Cudi',
-  },
-  {
-    song: '',
-    album: '',
-    trackNo: '',
-    trackLength: '',
-    features: '',
-  },
-  {
-    song: '',
-    album: '',
-    trackNo: '',
-    trackLength: '',
-    features: '',
-  },
-  {
-    song: '',
-    album: '',
-    trackNo: '',
-    trackLength: '',
-    features: '',
-  },
-  {
-    song: '',
-    album: '',
-    trackNo: '',
-    trackLength: '',
-    features: '',
-  },
-  {
-    song: '',
-    album: '',
-    trackNo: '',
-    trackLength: '',
-    features: '',
-  },
-];
 
-const YeTable = () => {
+
+const YeTable = ({guesses}) => {
   return (
     <div >
       <table className="YeTable">
@@ -60,7 +17,7 @@ const YeTable = () => {
           </tr>
         </thead>
         <tbody>
-          {songs.map((song, index) => (
+          {guesses.map((song, index) => (
             <tr key={index} className="YeTable">
               <td>{song.song}</td>
               <td>{song.album}</td>

@@ -12,6 +12,7 @@ songs = os.listdir(song_dir)
 
 # Create a list with indices as keys and song metadata as values
 song_dict = {}
+importstring = ""
 for i, song in enumerate(songs):
     try:
         tag = TinyTag.get(os.path.join(song_dir, song), image=True)            
@@ -44,7 +45,10 @@ for i, song in enumerate(songs):
             'file': song if song else "NONE",
             'path': os.path.join(song_dir, song) if song else "NONE",             
         }
-        
+        # import sound from './Songs/frankoceantest.mp3'
+
+        importstring += "import sound"+str(i)+' from "./Songs/'+song+'";\n'
+                
         if not tag.album: continue
         with open(f"src\\Assets\\AlbumArt\\{tag.album if tag.album else 'NONE'}.jpeg", 'wb') as file:
             data = tag.get_image()
@@ -56,3 +60,6 @@ for i, song in enumerate(songs):
 # Write the dictionary to a text file
 with open('song_dict.json', 'w') as f:
     f.write(json.dumps(song_dict, indent=4))
+
+with open('importstring.txt', 'w') as f:
+    f.write(importstring.replace("�$", "¥$"))

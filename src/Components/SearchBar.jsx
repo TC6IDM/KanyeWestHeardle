@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import '../Styles/SearchBar.css';
-import myData from '../song_dict.json';
 
-const SearchBar = () => {
+const SearchBar = ({setInput2, songs }) => {
   const [input, setInput] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   // console.log(myData)
   const handleChange = (e) => {
     const value = e.target.value;
     setInput(value);
-    var songs = [];
-    for (var key in myData) {
-      songs.push(myData[key].title)
-    }
+    setInput2(value);
+    
     if (value) {
       // const songsArray = Object.values(myData);
       // console.log(songsArray)
       const filteredSongs = songs.filter(song => 
-        song.toLowerCase().includes(value.toLowerCase())
+        song.title.toLowerCase().includes(value.toLowerCase())
       );
       setSuggestions(filteredSongs);
     } else {
@@ -27,6 +24,7 @@ const SearchBar = () => {
 
   const handleSuggestionClick = (suggestion) => {
     setInput(suggestion);
+    setInput2(suggestion);
     setSuggestions([]);
   };
 
@@ -37,9 +35,9 @@ const SearchBar = () => {
           {suggestions.map((suggestion, index) => (
             <li 
               key={index} 
-              onClick={() => handleSuggestionClick(suggestion)}
+              onClick={() => handleSuggestionClick(suggestion.title)}
             >
-              {suggestion}
+              {suggestion.title}
             </li>
           ))}
         </ul>
