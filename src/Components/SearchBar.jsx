@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import '../Styles/SearchBar.css';
+import myData from '../song_dict.json';
 
-const SearchBar = ({ songs }) => {
+const SearchBar = () => {
   const [input, setInput] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-
+  // console.log(myData)
   const handleChange = (e) => {
     const value = e.target.value;
     setInput(value);
+    var songs = [];
+    for (var key in myData) {
+      songs.push(myData[key].title)
+    }
     if (value) {
+      // const songsArray = Object.values(myData);
+      // console.log(songsArray)
       const filteredSongs = songs.filter(song => 
         song.toLowerCase().includes(value.toLowerCase())
       );

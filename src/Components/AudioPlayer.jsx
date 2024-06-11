@@ -109,6 +109,7 @@ const AudioPlayer = () => {
     }
 
     const submitAnswer = () => {
+        console.log(SearchBar.input)
         audio.play();
         setTimeout(() => {
             audio.stop();
@@ -116,31 +117,28 @@ const AudioPlayer = () => {
     }
 
     return (
-        <div className="centered">
-            <div>
-                <YeTable />
-            </div>
+        <div>
             <div className="progress-bar-container">
                 <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} cover={(16000 - musicList[musicList.indexOf(time)])/160 } />
             </div>
-                <div className="button-container2">
-                    <text className="time-textL">{currentTime.toFixed(2)}s</text>
+            <div className="button-container2">
+                <text className="time-textL">{currentTime.toFixed(2)}s</text>
                     
-                    <button className="play-button" onClick={playMusic}>
-                        <img src = {playbutton} />
-                    </button>
+                <button className="play-button" onClick={playMusic}>
+                    <img src = {playbutton} />
+                </button>
                     
-                    <text className="time-textR">16.00s</text>
-                </div>
-                <div >
-                    <SearchBar songs={songs} />
-                </div>
-                <div  className="button-container2">
-                    <button className="menu-button" onClick={changeTime}>{buttonText}</button>
-                    <button className="menu-button" onClick={submitAnswer}>Submit</button>
-                </div>
-                
+                <text className="time-textR">16.00s</text>
             </div>
+            <div >
+                <SearchBar/>
+            </div>
+            <div  className="button-container2">
+                <button className="menu-button" onClick={changeTime}>{buttonText}</button>
+                <button className="menu-button" onClick={submitAnswer}>Submit</button>
+            </div>
+        </div>
+                
     );
 };
 

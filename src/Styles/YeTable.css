@@ -1,46 +1,40 @@
 .YeTable {
     position: relative;
-    /* margin: 20px; */
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  YeTable, th, td {
-    border: 1px solid black;
+    border-top: none; /* Add this */
+    border-left: none; /* Add this */
+    border-right: none; /* Add this */
+}
+
+.YeTable td {
+    border: 1px solid rgb(0, 0, 0);
     padding: 10px;
     text-align: center;
-  }
-  
-  th {
-    background-color: #333;
-    color: white;
-    overflow: hidden; /* Add this */
-    text-overflow: ellipsis; /* Add this */
-    max-width: 0; /* Add this */
-    white-space: nowrap; /* Add this */
+    height: 30px;
 }
-  
-  td {
+
+
+th {
     color: white;
-    overflow: hidden; /* Add this */
-    text-overflow: ellipsis; /* Add this */
-    max-width: 0; /* Add this */
-    white-space: nowrap; /* Add this */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
+    white-space: nowrap;
+    background: none;
+    border: none;
 }
-  
-  tr:nth-child(even) {
+
+td {
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
+    white-space: nowrap;
     background-color: #2e2e2e;
-  }
-  
-  tr:nth-child(odd) {
-    background-color: #4e4e4e;
-  }
+}
 
-.YeTab {
-    position: relative;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  
+tr:nth-child(even) {
+    background-color: #2e2e2e;
+}

@@ -10,7 +10,7 @@ import jsonpickle # type: ignore
 song_dir = 'src\\Songs'
 songs = os.listdir(song_dir)
 
-# Create a dictionary with indices as keys and song metadata as values
+# Create a list with indices as keys and song metadata as values
 song_dict = {}
 for i, song in enumerate(songs):
     try:

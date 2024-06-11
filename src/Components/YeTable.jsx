@@ -8,48 +8,42 @@ const songs = [
     trackNo: '6 v',
     trackLength: '4:31 v',
     features: 'PARTYNEXTDOOR, 070 Shake, Kid Cudi',
-    bgColor: '#FFC300' // Yellow
   },
   {
-    song: 'Champion',
-    album: 'Graduation',
-    trackNo: '2 ^',
-    trackLength: '2:47 ^',
-    features: 'No features',
-    bgColor: '#FF5733' // Orange
+    song: '',
+    album: '',
+    trackNo: '',
+    trackLength: '',
+    features: '',
   },
   {
-    song: 'Good Life',
-    album: 'Graduation',
-    trackNo: '5',
-    trackLength: '3:27',
-    features: 'T-Pain',
-    bgColor: '#33FF57' // Green
+    song: '',
+    album: '',
+    trackNo: '',
+    trackLength: '',
+    features: '',
   },
   {
-    song: 'Stronger',
-    album: 'Graduation',
-    trackNo: '3',
-    trackLength: '5:12',
-    features: 'Daft Punk',
-    bgColor: '#339FFF' // Blue
+    song: '',
+    album: '',
+    trackNo: '',
+    trackLength: '',
+    features: '',
   },
   {
-    song: 'Heartless',
-    album: '808s & Heartbreak',
-    trackNo: '4',
-    trackLength: '3:31',
-    features: 'No features',
-    bgColor: '#FF33FF' // Purple
+    song: '',
+    album: '',
+    trackNo: '',
+    trackLength: '',
+    features: '',
   },
   {
-    song: 'Power',
-    album: 'My Beautiful Dark Twisted Fantasy',
-    trackNo: '1',
-    trackLength: '4:52',
-    features: 'Dwele',
-    bgColor: '#FF3333' // Red
-  }
+    song: '',
+    album: '',
+    trackNo: '',
+    trackLength: '',
+    features: '',
+  },
 ];
 
 const YeTable = () => {
@@ -67,7 +61,7 @@ const YeTable = () => {
         </thead>
         <tbody>
           {songs.map((song, index) => (
-            <tr key={index} style={{ backgroundColor: song.bgColor }}>
+            <tr key={index} className="YeTable">
               <td>{song.song}</td>
               <td>{song.album}</td>
               <td>{song.trackNo}</td>
