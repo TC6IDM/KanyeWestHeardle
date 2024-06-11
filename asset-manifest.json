@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/KanyeWestHeardle/static/css/main.a6cdb927.css",
-    "main.js": "/KanyeWestHeardle/static/js/main.42f2d25c.js",
+    "main.js": "/KanyeWestHeardle/static/js/main.c48dec03.js",
     "static/media/frankoceantest.mp3": "/KanyeWestHeardle/static/media/frankoceantest.dec0795a575a9fb656b4.mp3",
     "static/media/play.png": "/KanyeWestHeardle/static/media/play.861ffabef4f10a44302f.png",
     "index.html": "/KanyeWestHeardle/index.html",
     "main.a6cdb927.css.map": "/KanyeWestHeardle/static/css/main.a6cdb927.css.map",
-    "main.42f2d25c.js.map": "/KanyeWestHeardle/static/js/main.42f2d25c.js.map"
+    "main.c48dec03.js.map": "/KanyeWestHeardle/static/js/main.c48dec03.js.map"
   },
   "entrypoints": [
     "static/css/main.a6cdb927.css",
-    "static/js/main.42f2d25c.js"
+    "static/js/main.c48dec03.js"
   ]
 }
