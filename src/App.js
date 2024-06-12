@@ -16,7 +16,7 @@ function App() {
     songs.push(myData[key])
   }
   // var todaysSong = songs[Math.floor(Math.random() * songs.length)]
-  var todaysSong = songs[72]
+  var todaysSong = songs[73]
   var sound = require('./Songs/'+todaysSong.file)
   console.log("Today's Song: " + todaysSong.title )
   const [guesses, setGuesses] = useState([

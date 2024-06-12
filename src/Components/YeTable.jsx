@@ -2,7 +2,6 @@ import React from 'react';
 import '../Styles/YeTable.css'; // Assuming you have some CSS to style the table
 
 
-
 const YeTable = ({guesses, todaysSong}) => {
 
   const albumsInOrder = [
@@ -21,7 +20,7 @@ const YeTable = ({guesses, todaysSong}) => {
     "#Only One",
     "#FourFiveSeconds",
     "#All Day",
-    "The Life of Pablo",
+    "The Life Of Pablo",
     "#Ye vs. the People (starring TI as the People)",
     "#Lift Yourself",
     "ye",
@@ -60,13 +59,14 @@ const YeTable = ({guesses, todaysSong}) => {
           {guesses.map((song, index) => {
             // console.log(song.song)
             if (song.song === ""){
+              var selclass = index === 0 || guesses[index-1].song !== "" ? "selected" :  ''
               return(
                 <tr key={index} className="YeTable">
-                  <td/>
-                  <td/>
-                  <td/>
-                  <td/>
-                  <td/>
+                  <td className={selclass} td/>
+                  <td className={selclass} td/>
+                  <td className={selclass} td/>
+                  <td className={selclass} td/>
+                  <td className={selclass} td/>
                 </tr>
               )
             }
@@ -107,10 +107,11 @@ const YeTable = ({guesses, todaysSong}) => {
             }
             if (albumCouldBe.includes(song.chosenSong.album.toLowerCase())) albumClass = 'close'
             // var albumPos = 
+            console.log(todaysSongAlbumIndex)
             var albumPos = todaysSongAlbumIndex - originalAlbumIndex === 0 ? '' : todaysSongAlbumIndex - originalAlbumIndex > 0 ? '▲' : '▼'
-            
+            console.log(originalAlbumIndex)
             var trackNoClass = song.chosenSong.track === todaysSong.track ? 'correct' : Math.abs(song.chosenSong.track - todaysSong.track)<=2 ? 'close' : ''
-            var trackNoPos = song.chosenSong.track - todaysSong.track === 0 ? '' : song.chosenSong.track - todaysSong.track > 0 ? '▲' : '▼'
+            var trackNoPos = song.chosenSong.track - todaysSong.track === 0 ? '' : song.chosenSong.track - todaysSong.track > 0 ? '▼' : '▲'
 
             var trackLengthClass = Math.floor(song.chosenSong.duration) === Math.floor(todaysSong.duration) ? 'correct' : Math.abs(Math.floor(song.chosenSong.duration) - Math.floor(todaysSong.duration))<=30 ? 'close': ''
             var trackLengthPos = Math.floor(song.chosenSong.duration) === Math.floor(todaysSong.duration) ? '' : Math.floor(song.chosenSong.duration) > Math.floor(todaysSong.duration) ? '▼' : '▲'
@@ -119,16 +120,25 @@ const YeTable = ({guesses, todaysSong}) => {
             var chosenSongFeaturesSet = new Set(chosenSongFeatures.split("/"))
             var todaysSongFeatures = todaysSong.artist.replace("/Kanye West", "").replace("Kanye West/", "").replace("Kanye West", "")
             var todaysSongFeaturesSet = new Set(todaysSongFeatures.split("/"))
-            console.log(chosenSongFeatures, todaysSongFeatures)
+            // console.log(chosenSongFeatures, todaysSongFeatures)
             var featuresClass = chosenSongFeatures === todaysSongFeatures ? 'correct' : [...chosenSongFeaturesSet].some(item => todaysSongFeaturesSet.has(item)) ? 'close' : ''
             // var featuresPos = todaysSongFeatures.filter(item => chosenSongFeatures.has(item))
             return(
             <tr key={index} className="YeTable">
               <td className={songClass}>{song.song}</td>
-              <td className={albumClass}>{song.album + " " + albumPos}</td>
+              <td className={albumClass}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img 
+                    src={require(`../Assets/AlbumArt/${song.chosenSong.album}.jpeg`)} 
+                    alt={song.album} 
+                    style={{ width: '50px', height: '50px', marginRight: '10px' }} // Added marginRight for some space between the image and albumPos
+                  />
+                  <div className="albumPos">{albumPos}</div>
+                </div>
+              </td>
               <td className={trackNoClass}>{song.trackNo + " " + trackNoPos}</td>
               <td className={trackLengthClass}>{song.trackLength + " " + trackLengthPos}</td>
-              <td className={featuresClass}>{song.features}</td>
+              <td className={featuresClass}>{song.features.replaceAll("/",", ")}</td>
             </tr>
           )})}
         </tbody>
