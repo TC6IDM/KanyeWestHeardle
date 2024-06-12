@@ -38,3 +38,13 @@ td {
 tr:nth-child(even) {
     background-color: #2e2e2e;
 }
+.correct {
+    background-color: green;
+}
+.close {
+    background-color: rgb(170, 168, 40);
+}
+
+.selected{
+    background-color: #808080;
+}

@@ -15,7 +15,8 @@ function App() {
   for (var key in myData) {
     songs.push(myData[key])
   }
-  var todaysSong = songs[Math.floor(Math.random() * songs.length)]
+  // var todaysSong = songs[Math.floor(Math.random() * songs.length)]
+  var todaysSong = songs[72]
   var sound = require('./Songs/'+todaysSong.file)
   console.log("Today's Song: " + todaysSong.title )
   const [guesses, setGuesses] = useState([
@@ -25,6 +26,7 @@ function App() {
       trackNo: '',
       trackLength: '',
       features: '',
+      chosenSong: null
     },
     {
       song: '',
@@ -32,6 +34,7 @@ function App() {
       trackNo: '',
       trackLength: '',
       features: '',
+      chosenSong: null
     },
     {
       song: '',
@@ -39,6 +42,7 @@ function App() {
       trackNo: '',
       trackLength: '',
       features: '',
+      chosenSong: null
     },
     {
       song: '',
@@ -46,6 +50,7 @@ function App() {
       trackNo: '',
       trackLength: '',
       features: '',
+      chosenSong: null
     },
     {
       song: '',
@@ -53,6 +58,7 @@ function App() {
       trackNo: '',
       trackLength: '',
       features: '',
+      chosenSong: null
     },
     {
       song: '',
@@ -60,15 +66,23 @@ function App() {
       trackNo: '',
       trackLength: '',
       features: '',
+      chosenSong: null
     },
   ]);
   
   const submitAnswer = () => {
     var i = 0;
     while (guesses[i].song !== '') i++;
-    const chosenSong = songs.filter(song => 
-      song.title.toLowerCase().includes(input.toLowerCase())
+    var chosenSong = songs.filter(song => 
+      song.title.toLowerCase()===input.toLowerCase()
     )[0];
+    if (chosenSong === undefined) {
+      chosenSong = songs.filter(song => 
+        song.title.toLowerCase().includes(input.toLowerCase())
+      )[0];
+    }
+    if (chosenSong === undefined) return;
+    changeTime()
     var minutes = Math.floor(chosenSong.duration / 60);
     var seconds = Math.floor(chosenSong.duration - (minutes * 60));
     setGuesses(prevGuesses => {
@@ -77,8 +91,9 @@ function App() {
       newGuesses[i].album = chosenSong.album;
       newGuesses[i].trackNo = chosenSong.track;
       newGuesses[i].trackLength =  minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-      newGuesses[i].features = chosenSong.artist.replace("/Kanye West", "").replace("Kanye West/", "").replace("Kanye West", "");
-      newGuesses[i].features = newGuesses[i].features === "" ? "None" : newGuesses[i].features;
+      newGuesses[i].features = chosenSong.artist;
+      newGuesses[i].features = newGuesses[i].features.replace("/Kanye West", "").replace("Kanye West/", "").replace("Kanye West", "") === "" ? "None" : newGuesses[i].features.replace("/Kanye West", "").replace("Kanye West/", "").replace("Kanye West", "");
+      newGuesses[i].chosenSong = chosenSong;
       return newGuesses;
     });
     if (i === 5) {
@@ -96,6 +111,7 @@ function App() {
       newGuesses[i].trackNo = "x";
       newGuesses[i].trackLength =  "x";
       newGuesses[i].features = "x";
+      newGuesses[i].chosenSong = null;
       return newGuesses;
     });
     if (i === 5) {
@@ -108,12 +124,33 @@ function App() {
     // alert('Game Over');
   }
 
+
+  const [buttonText, setButtonText] = useState('Skip +1S')
+  const changeTime = () => {
+      let index = musicList.indexOf(time);
+      if (index === musicList.length - 1) { // if it's the last item in the list
+          console.log('last item')
+          skip()
+      } else {
+          console.log(musicList[index + 1])
+          setTime(musicList[index + 1]); // set time to the next item
+          if (index === musicList.length - 2) {
+              setButtonText(`Skip`);
+          } else{
+              setButtonText(`Skip +${(musicList[musicList.indexOf(time)+2] - musicList[musicList.indexOf(time)+1])/1000}S`);
+          }
+          skip()
+      }
+      
+  };
+
+  
   return (
     <div>
-      <YeTable guesses={guesses}/>
+      <YeTable guesses={guesses} todaysSong={todaysSong}/>
       <AudioPlayer musicList={musicList} time = {time} sound = {sound}/>
       <SearchBar setInput2 = {setInput} songs= {songs}/>
-      <MenuButtons time = {time} setTime = {setTime} skip = {skip} musicList={musicList} submitAnswer = {submitAnswer}/>
+      <MenuButtons time = {time} setTime = {setTime} skip = {skip} musicList={musicList} submitAnswer = {submitAnswer} changeTime = {changeTime} buttonText={buttonText}/>
     </div >
   );
 }
