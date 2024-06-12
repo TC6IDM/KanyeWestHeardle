@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/KanyeWestHeardle/static/css/main.a6cdb927.css",
-    "main.js": "/KanyeWestHeardle/static/js/main.34568f02.js",
+    "main.css": "/KanyeWestHeardle/static/css/main.2afaa690.css",
+    "main.js": "/KanyeWestHeardle/static/js/main.1da014d0.js",
     "static/media/(021) Kanye West - Last Call.mp3": "/KanyeWestHeardle/static/media/(021) Kanye West - Last Call.6d1725fdf76f7cd18a5f.mp3",
     "static/media/(172) Kanye West - Jesus Lord pt 2.mp3": "/KanyeWestHeardle/static/media/(172) Kanye West - Jesus Lord pt 2.df14c2bea964f0ed33ec.mp3",
     "static/media/frankoceantest.mp3": "/KanyeWestHeardle/static/media/frankoceantest.dec0795a575a9fb656b4.mp3",
@@ -225,11 +225,11 @@
     "static/media/(036) Kanye West - Skit \u0000#3.mp3": "/KanyeWestHeardle/static/media/(036) Kanye West - Skit #3.381112575d625f091636.mp3",
     "static/media/play.png": "/KanyeWestHeardle/static/media/play.861ffabef4f10a44302f.png",
     "index.html": "/KanyeWestHeardle/index.html",
-    "main.a6cdb927.css.map": "/KanyeWestHeardle/static/css/main.a6cdb927.css.map",
-    "main.34568f02.js.map": "/KanyeWestHeardle/static/js/main.34568f02.js.map"
+    "main.2afaa690.css.map": "/KanyeWestHeardle/static/css/main.2afaa690.css.map",
+    "main.1da014d0.js.map": "/KanyeWestHeardle/static/js/main.1da014d0.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6cdb927.css",
-    "static/js/main.34568f02.js"
+    "static/css/main.2afaa690.css",
+    "static/js/main.1da014d0.js"
   ]
 }
