@@ -10,14 +10,14 @@ import './Styles/Index.css';
 function App() {
   const [input, setInput] = useState('');
   const [time, setTime] = useState(1000)
-  let musicList = [1000, 2000, 4000, 7000, 11000, 16000]
+  const musicList = [1000, 2000, 4000, 7000, 11000, 16000]
   var songs = [];
   for (var key in myData) {
     songs.push(myData[key])
   }
   var todaysSong = songs[Math.floor(Math.random() * songs.length)]
   var sound = require('./Songs/'+todaysSong.file)
-
+  console.log("Today's Song: " + todaysSong.title )
   const [guesses, setGuesses] = useState([
     {
       song: '',

@@ -1,21 +1,23 @@
-import {useState, useEffect }  from "react";
+import {useState, useEffect, useRef }  from "react";
 import ProgressBarDifferentColour from './ProgressBarDifferentColour';
 import '../Styles/AudioPlayer.css';
 import playbutton from '../Assets/play.png'
 import React from 'react';
-const AudioPlayer = ({musicList,time, sound}) => {
-    const [audio, setAudio] = useState( new Audio(sound) )
+const AudioPlayer = ({musicList, time, sound}) => {
+    const audioRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
 
     useEffect(() => {
+        if (!audioRef.current) audioRef.current = new Audio(sound);
+
         const interval = setInterval(() => {
-            setCurrentTime(audio.currentTime);
+            setCurrentTime(audioRef.current.currentTime);
         }, 1);
 
         return () => {
             clearInterval(interval);
         };
-    }, [audio]);
+    }, [sound]);
 
     HTMLMediaElement.prototype.stop = function(){
         this.pause();
@@ -23,16 +25,16 @@ const AudioPlayer = ({musicList,time, sound}) => {
     };
 
     const playMusic = () => {
-        audio.play();
+        audioRef.current.play();
         setTimeout(() => {
-            audio.stop();
+            audioRef.current.stop();
         }, time);
     }
 
     return (
         <div>
             <div className="progress-bar-container">
-                <ProgressBarDifferentColour currentValue={audio.currentTime} maxValue={16} cover={(16000 - musicList[musicList.indexOf(time)])/160 } />
+                <ProgressBarDifferentColour currentValue={currentTime} maxValue={16} cover={(16000 - musicList[musicList.indexOf(time)])/160 } />
             </div>
             <div className="button-container2">
                 <text className="time-textL">{currentTime.toFixed(2)}s</text>
