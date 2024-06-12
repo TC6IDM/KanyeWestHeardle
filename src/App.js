@@ -6,7 +6,6 @@ import MenuButtons from './Components/MenuButtons';
 import { useState } from 'react';
 import myData from './song_dict.json';
 import './Styles/Index.css';
-import sound220 from './Songs/frankoceantest.mp3'
 
 function App() {
   const [input, setInput] = useState('');
@@ -16,7 +15,9 @@ function App() {
   for (var key in myData) {
     songs.push(myData[key])
   }
-  
+  var todaysSong = songs[Math.floor(Math.random() * songs.length)]
+  var sound = require('./Songs/'+todaysSong.file)
+
   const [guesses, setGuesses] = useState([
     {
       song: '',
@@ -80,6 +81,9 @@ function App() {
       newGuesses[i].features = newGuesses[i].features === "" ? "None" : newGuesses[i].features;
       return newGuesses;
     });
+    if (i === 5) {
+      gameover();
+    }
   }
 
   const skip = () => {
@@ -107,7 +111,7 @@ function App() {
   return (
     <div>
       <YeTable guesses={guesses}/>
-      <AudioPlayer musicList={musicList} time = {time} sound = {sound220}/>
+      <AudioPlayer musicList={musicList} time = {time} sound = {sound}/>
       <SearchBar setInput2 = {setInput} songs= {songs}/>
       <MenuButtons time = {time} setTime = {setTime} skip = {skip} musicList={musicList} submitAnswer = {submitAnswer}/>
     </div >
