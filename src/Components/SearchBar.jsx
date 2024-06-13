@@ -13,7 +13,7 @@ const SearchBar = ({setInput2, songs }) => {
     if (value) {
       // const songsArray = Object.values(myData);
       // console.log(songsArray)
-      const filteredSongs = songs.filter(song => 
+      const filteredSongs = Object.values(songs).filter(song => 
         song.title.toLowerCase().includes(value.toLowerCase())
       );
       setSuggestions(filteredSongs);

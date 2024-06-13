@@ -17,13 +17,10 @@ function App() {
   const [time, setTime] = useState(1000)
   const [musicList, setMusicList] = useState([1000, 2000, 4000, 7000, 11000, 16000])
   const [modalShow, setModalShow] = React.useState(false);
-
-  var songs = [];
-  for (var key in myData) {
-    songs.push(myData[key])
-  }
+  const [songs, setSongs] = useState(myData);
+  const [todaysSong, setTodaysSong] = useState(songs[Math.floor(Math.random() * Object.keys(songs).length+1)])
   // var todaysSong = songs[Math.floor(Math.random() * songs.length)]
-  var todaysSong = songs[73]
+  // var todaysSong = songs[73]
   var sound = require('./Songs/'+todaysSong.file)
   console.log("Today's Song: " + todaysSong.title )
   const [guesses, setGuesses] = useState([
@@ -81,23 +78,28 @@ function App() {
     var i = 0;
     while (guesses[i].song !== '') {
       i++;
-      if (i >= 5) {
-        gameover();
-      }
       if (i >= 6) {
+        gameover();
         return;
       }
     }
-    var chosenSong = songs.filter(song => 
+    var chosenSong = Object.values(songs).filter(song => 
       song.title.toLowerCase()===input.toLowerCase()
     )[0];
     if (chosenSong === undefined) {
-      chosenSong = songs.filter(song => 
+      chosenSong = Object.values(songs).filter(song => 
         song.title.toLowerCase().includes(input.toLowerCase())
       )[0];
     }
     if (chosenSong === undefined) return;
-    changeTime()
+    if (chosenSong.title.toLowerCase() === todaysSong.title.toLowerCase()) {
+      gameover();
+      if (i < 5) changeTime()
+    }
+    else{
+      changeTime()
+    }
+    
     var minutes = Math.floor(chosenSong.duration / 60);
     var seconds = Math.floor(chosenSong.duration - (minutes * 60));
     setGuesses(prevGuesses => {
@@ -111,9 +113,9 @@ function App() {
       newGuesses[i].chosenSong = chosenSong;
       return newGuesses;
     });
-    if (i >= 5) {
-      gameover();
-    }
+    // if (i >= 5) {
+    //   gameover();
+    // }
   }
 
   const skip = () => {
@@ -137,14 +139,15 @@ function App() {
       newGuesses[i].chosenSong = null;
       return newGuesses;
     });
-    if (i >= 5) {
-      gameover();
-    }
+    // if (i >= 5) {
+    //   gameover();
+    // }
   }
 
   const gameover = () => {
     console.log('Game Over')
     setModalShow(true)
+    //reset the game here
     // alert('Game Over');
   }
 
@@ -153,8 +156,8 @@ function App() {
   const changeTime = () => {
       let index = musicList.indexOf(time);
       if (index === musicList.length - 1) { // if it's the last item in the list
-          console.log('last item')
           skip()
+          // console.log("last item")
       } else {
           console.log(musicList[index + 1])
           setTime(musicList[index + 1]); // set time to the next item

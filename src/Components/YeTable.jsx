@@ -107,9 +107,9 @@ const YeTable = ({guesses, todaysSong}) => {
             }
             if (albumCouldBe.includes(song.chosenSong.album.toLowerCase())) albumClass = 'close'
             // var albumPos = 
-            console.log(todaysSongAlbumIndex)
+            // console.log(todaysSongAlbumIndex)
             var albumPos = todaysSongAlbumIndex - originalAlbumIndex === 0 ? '' : todaysSongAlbumIndex - originalAlbumIndex > 0 ? '▲' : '▼'
-            console.log(originalAlbumIndex)
+            // console.log(originalAlbumIndex)
             var trackNoClass = song.chosenSong.track === todaysSong.track ? 'correct' : Math.abs(song.chosenSong.track - todaysSong.track)<=2 ? 'close' : ''
             var trackNoPos = song.chosenSong.track - todaysSong.track === 0 ? '' : song.chosenSong.track - todaysSong.track > 0 ? '▼' : '▲'
 
