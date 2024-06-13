@@ -18,7 +18,7 @@
 th {
     color: white;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     max-width: 0;
     white-space: nowrap;
     background: none;
@@ -64,20 +64,15 @@ th {
     height: 50px;
 }
 
-
-
 td {
     color: white;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     max-width: 0;
     white-space: nowrap;
     background-color: #2e2e2e;
 }
 
-tr:nth-child(even) {
-    background-color: #2e2e2e;
-}
 .correct {
     background-color: green;
 }

@@ -10,13 +10,13 @@ html, body {
 }
 
 .button-container2 {
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Change this */
-    align-items: center; /* Change this */
-    margin-top: 20px;
-    width: 50vw; /* Adjust this to change the width of the progress bar */
-    margin-bottom: 20px;
+    justify-content: space-between; /* Centers items horizontally in the container */
+    align-items: center; /* Centers items vertically in the container */
+    margin: auto; /* Centers the container itself */
+    width: 100%; /* Adjust this to change the width of the progress bar */
 }
 
 .play-button {

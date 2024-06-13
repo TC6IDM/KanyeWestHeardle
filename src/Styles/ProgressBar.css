@@ -59,8 +59,9 @@ body {
   .progressBarWrapper {
     position: relative;
     height: 20px; /* Adjust this to change the height of the progress bar */
-    width: 50vw; /* Adjust this to change the width of the progress bar */
+    width: 100%; /* Adjust this to change the width of the progress bar */
     border: 1px solid #ffffff; /* This will add a border around the progress bar */
+    margin-bottom: 10px;
   }
   
   .progressBarWrapper::before,
