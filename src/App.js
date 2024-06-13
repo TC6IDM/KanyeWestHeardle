@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import AudioPlayer from './Components/AudioPlayer';
 import YeTable from './Components/YeTable';
@@ -6,11 +7,17 @@ import MenuButtons from './Components/MenuButtons';
 import { useState } from 'react';
 import myData from './song_dict.json';
 import './Styles/Index.css';
+import GameOver from './Components/GameOver';
+import 'reactjs-popup/dist/index.css';
+import './Styles/YeTable.css'; // Assuming you have some CSS to style the table
+// import Popup from 'reactjs-popup';
 
 function App() {
   const [input, setInput] = useState('');
   const [time, setTime] = useState(1000)
-  const musicList = [1000, 2000, 4000, 7000, 11000, 16000]
+  const [musicList, setMusicList] = useState([1000, 2000, 4000, 7000, 11000, 16000])
+  const [modalShow, setModalShow] = React.useState(false);
+
   var songs = [];
   for (var key in myData) {
     songs.push(myData[key])
@@ -72,7 +79,15 @@ function App() {
   
   const submitAnswer = () => {
     var i = 0;
-    while (guesses[i].song !== '') i++;
+    while (guesses[i].song !== '') {
+      i++;
+      if (i >= 5) {
+        gameover();
+      }
+      if (i >= 6) {
+        return;
+      }
+    }
     var chosenSong = songs.filter(song => 
       song.title.toLowerCase()===input.toLowerCase()
     )[0];
@@ -96,14 +111,22 @@ function App() {
       newGuesses[i].chosenSong = chosenSong;
       return newGuesses;
     });
-    if (i === 5) {
+    if (i >= 5) {
       gameover();
     }
   }
 
   const skip = () => {
     var i = 0;
-    while (guesses[i].song !== '') i++;
+    while (guesses[i].song !== '') {
+      i++;
+      if (i >= 5) {
+        gameover();
+      }
+      if (i >= 6) {
+        return;
+      }
+    }
     setGuesses(prevGuesses => {
       const newGuesses = [...prevGuesses];
       newGuesses[i].song = "x";
@@ -114,13 +137,14 @@ function App() {
       newGuesses[i].chosenSong = null;
       return newGuesses;
     });
-    if (i === 5) {
+    if (i >= 5) {
       gameover();
     }
   }
 
   const gameover = () => {
     console.log('Game Over')
+    setModalShow(true)
     // alert('Game Over');
   }
 
@@ -151,7 +175,12 @@ function App() {
       <AudioPlayer musicList={musicList} time = {time} sound = {sound}/>
       <SearchBar setInput2 = {setInput} songs= {songs}/>
       <MenuButtons time = {time} setTime = {setTime} skip = {skip} musicList={musicList} submitAnswer = {submitAnswer} changeTime = {changeTime} buttonText={buttonText}/>
-    </div >
+      <GameOver
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </div>
+    
   );
 }
 

@@ -131,7 +131,7 @@ const YeTable = ({guesses, todaysSong}) => {
                   <img 
                     src={require(`../Assets/AlbumArt/${song.chosenSong.album}.jpeg`)} 
                     alt={song.album} 
-                    style={{ width: '50px', height: '50px', marginRight: '10px' }} // Added marginRight for some space between the image and albumPos
+                    style={{ width: '49px', height: '49px', marginRight: '10px' }} // Added marginRight for some space between the image and albumPos
                   />
                   <div className="albumPos">{albumPos}</div>
                 </div>
