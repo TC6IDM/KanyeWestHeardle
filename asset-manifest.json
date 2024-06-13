@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/KanyeWestHeardle/static/css/main.b20dcd36.css",
-    "main.js": "/KanyeWestHeardle/static/js/main.13b64d36.js",
+    "main.css": "/KanyeWestHeardle/static/css/main.ecf34f6a.css",
+    "main.js": "/KanyeWestHeardle/static/js/main.dfb0864d.js",
     "static/media/(021) Kanye West - Last Call.mp3": "/KanyeWestHeardle/static/media/(021) Kanye West - Last Call.6d1725fdf76f7cd18a5f.mp3",
     "static/media/(172) Kanye West - Jesus Lord pt 2.mp3": "/KanyeWestHeardle/static/media/(172) Kanye West - Jesus Lord pt 2.df14c2bea964f0ed33ec.mp3",
     "static/media/frankoceantest.mp3": "/KanyeWestHeardle/static/media/frankoceantest.dec0795a575a9fb656b4.mp3",
@@ -257,11 +257,11 @@
     "static/media/Ye vs. the People (starring TI as the People).jpeg": "/KanyeWestHeardle/static/media/Ye vs. the People (starring TI as the People).1a4c30226ffc75810e4c.jpeg",
     "static/media/Only One.jpeg": "/KanyeWestHeardle/static/media/Only One.31009cb19c9284f418b0.jpeg",
     "index.html": "/KanyeWestHeardle/index.html",
-    "main.b20dcd36.css.map": "/KanyeWestHeardle/static/css/main.b20dcd36.css.map",
-    "main.13b64d36.js.map": "/KanyeWestHeardle/static/js/main.13b64d36.js.map"
+    "main.ecf34f6a.css.map": "/KanyeWestHeardle/static/css/main.ecf34f6a.css.map",
+    "main.dfb0864d.js.map": "/KanyeWestHeardle/static/js/main.dfb0864d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b20dcd36.css",
-    "static/js/main.13b64d36.js"
+    "static/css/main.ecf34f6a.css",
+    "static/js/main.dfb0864d.js"
   ]
 }
