@@ -6,6 +6,8 @@
     border-top: none; /* Add this */
     border-left: none; /* Add this */
     border-right: none; /* Add this */
+    table-layout: auto; /* Add this */
+
 }
 
 .YeTable td {
@@ -31,45 +33,54 @@ th {
 
 .YeTable td:nth-child(1) {
     border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;
     height: 50px;
+    /* width: max-content; */
+    word-wrap: break-word; /* Add this */
+    overflow-wrap: break-word; /* Add this */
 }
 
 .YeTable td:nth-child(2) {
     border: 1px solid rgb(0, 0, 0);
     text-align: center;
-    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     height: 50px;
 }
 
 .YeTable td:nth-child(3) {
     border: 1px solid rgb(0, 0, 0);
-    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     text-align: center;
     height: 50px;
 }
 
 .YeTable td:nth-child(4) {
     border: 1px solid rgb(0, 0, 0);
-    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     text-align: center;
     height: 50px;
 }
 
 .YeTable td:nth-child(5) {
     border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;
     height: 50px;
+    /* width: max-content; */
+    word-wrap: break-word; /* Add this */
+    overflow-wrap: break-word; /* Add this */
 }
 
 td {
     color: white;
     overflow: hidden;
     text-overflow: clip;
-    max-width: 0;
-    white-space: nowrap;
+    /* max-width: 0; */
+    /* white-space: nowrap; */
     background-color: #2e2e2e;
 }
 
@@ -95,4 +106,16 @@ td {
     position: relative;
     top: -50%; /* Adjust this value to suit your needs */
     right: 0;
+}
+
+.albumArtContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.albumArtImage {
+    width: 49px;
+    height: 49px;
+    margin-right: 10px;
 }

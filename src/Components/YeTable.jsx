@@ -127,11 +127,11 @@ const YeTable = ({guesses, todaysSong}) => {
             <tr key={index} className="YeTable">
               <td className={songClass}>{song.song}</td>
               <td className={albumClass}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="albumArtContainer">
                   <img 
                     src={require(`../Assets/AlbumArt/${song.chosenSong.album}.jpeg`)} 
                     alt={song.album} 
-                    style={{ width: '49px', height: '49px', marginRight: '10px' }} // Added marginRight for some space between the image and albumPos
+                    className="albumArtImage"
                   />
                   <div className="albumPos">{albumPos}</div>
                 </div>
