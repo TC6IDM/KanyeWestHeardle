@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import '../Styles/SearchBar.css';
 
-const SearchBar = ({setInput2, songs }) => {
-  const [input, setInput] = useState('');
+const SearchBar = ({input, setInput, songs }) => {
+  // const [input, setInput] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   // console.log(myData)
   const handleChange = (e) => {
     const value = e.target.value;
     setInput(value);
-    setInput2(value);
+    // setInput2(value);
     
     if (value) {
       // const songsArray = Object.values(myData);
@@ -24,7 +24,7 @@ const SearchBar = ({setInput2, songs }) => {
 
   const handleSuggestionClick = (suggestion) => {
     setInput(suggestion);
-    setInput2(suggestion);
+    // setInput2(suggestion);
     setSuggestions([]);
   };
 

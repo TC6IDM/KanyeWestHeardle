@@ -1,0 +1,24 @@
+.black-modal .modal-content {
+    background-color: black;
+    color: white; /* Change the text color to white for better readability */
+  }
+  .black-modal .modal-header .close {
+    color: white;
+  }
+  
+  .black-modal .modal-header .close:hover {
+    color: #ccc;
+  }
+  .centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+    padding-bottom: 10px; /* Adjust as needed */
+
+  }
+  .centered-title {
+    width: 100%;
+    text-align: center;
+  }
