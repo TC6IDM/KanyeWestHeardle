@@ -12,7 +12,7 @@ const YeTable = ({guesses, todaysSong}) => {
     "808s & Heartbreak",
     "#Christmas In Harlem",
     "My Beautiful Dark Twisted Fantasy",
-    "Watch the Throne (Deluxe)",
+    "Watch The Throne (Deluxe)",
     "#Cold",
     "#Mercy",
     "#New God Flow",

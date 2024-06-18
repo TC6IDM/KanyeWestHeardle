@@ -22,8 +22,8 @@ The Features row will show the features of the song you guessed. If it is yellow
 ![Spotify Profile Picture](https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a)
 
 ### TODO:
-finish game over screen
 database to store scores
+display score
 actually picking a song at random (or based on the day)
 Hard mode 1: can only hear audio
 Hard mode 2: can not hear audio

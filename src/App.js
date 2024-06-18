@@ -12,10 +12,14 @@ import 'reactjs-popup/dist/index.css';
 import './Styles/YeTable.css'; // Assuming you have some CSS to style the table
 // import firebase from 'firebase/app';
 import { initializeApp } from "firebase/app";
-import firebase from 'firebase/app';
-import 'firebase/compat/database';
+// import firebase from 'firebase/app';
+import { increment } from "firebase/firestore";
+// import 'firebase/compat/database';
 import { getAnalytics } from "firebase/analytics";
 import { v4 as uuidv4 } from 'uuid';
+import { FIREBASE_AUTH, FIRESTORE_DB } from './FIREBASE_APP';
+import { doc, setDoc } from "firebase/firestore";
+
 
 // import Popup from 'reactjs-popup';
 
@@ -83,7 +87,7 @@ function App() {
     },
   ]);
   const [cover, setCover] = useState((16000 - musicList[musicList.indexOf(time)])/160)
-
+  const auth = FIREBASE_AUTH;
   // const app = initializeApp(firebaseConfig);
   // const analytics = getAnalytics(app);-
   // const db = firebase.database();
@@ -113,7 +117,7 @@ function App() {
     while (guesses[i].song !== '') {
       i++;
       if (i >= 6) {
-        gameover();
+        gameover(false);
         return;
       }
     }
@@ -129,7 +133,7 @@ function App() {
     setInput("")
     if (chosenSong.title.toLowerCase() === todaysSong.title.toLowerCase()) {
       setGameWon(true)
-      gameover();
+      gameover(true);
       // if (i < 5) changeTime()
     }
     else{
@@ -159,10 +163,7 @@ function App() {
     while (guesses[i].song !== '') {
       i++;
       if (i >= 5) {
-        gameover();
-      }
-      if (i >= 6) {
-        return;
+        gameover(false);
       }
     }
     setGuesses(prevGuesses => {
@@ -180,6 +181,23 @@ function App() {
     // }
   }
 
+  const gameover = (win) => {
+    console.log('Game Over')
+    setModalShow(true)
+    setCover(0)
+    setMaxlen(todaysSong.duration)
+    audioRef.current.play();
+    var i = 0;
+    while (i<6 && guesses[i].song !== '') i++;
+    if (!win) i = 7; // If game is not won, set guesses to 7
+    else i++; 
+    updateUserProgress(getUserId(), i);
+    
+    // updateRecord(userId, 1);
+    //reset the game here
+    // alert('Game Over');
+  }
+
   const getUserId = () => {
     let userId = localStorage.getItem('userId');
     if (!userId) {
@@ -189,17 +207,15 @@ function App() {
     return userId;
   };
 
-  const gameover = () => {
-    console.log('Game Over')
-    setModalShow(true)
-    setCover(0)
-    setMaxlen(todaysSong.duration)
-    audioRef.current.play();
-    const userId = getUserId();
-    // updateRecord(userId, 1);
-    //reset the game here
-    // alert('Game Over');
+  
+  async function updateUserProgress(userId, guessCount) {
+    const userRef = doc(FIRESTORE_DB, 'users', userId);
+    
+    await setDoc(userRef, {
+      [`guess${guessCount}`]: increment(1)
+    }, { merge: true });
   }
+  
 
 
   const [buttonText, setButtonText] = useState('Skip +1S')
